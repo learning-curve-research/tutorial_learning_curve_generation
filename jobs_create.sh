@@ -8,7 +8,7 @@
 
 
 # Relevant paths:
-PROJECT_DIR="/tudelft.net/staff-bulk/ewi/insy/PRLab/Students/learning_curve/genlc"
+PROJECT_DIR="/tudelft.net/staff-bulk/ewi/insy/PRLab/Students/learning_curve/tutorial_learning_curve_generation"
 CACHE_DIR="/tudelft.net/staff-bulk/ewi/insy/PRLab/Staff/tjviering/lcdb11/openml_cache"
 CONTAINER="${PROJECT_DIR}/lcdb11container.sif"
 CONFIG_DIR="${HOME}/.config/openml"
