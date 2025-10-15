@@ -1,0 +1,35 @@
+Bootstrap: docker
+From: ubuntu:latest
+
+%files
+    requirements.txt /requirements.txt
+
+%post
+    # Update and install necessary system packages
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        tree \
+        time \
+        vim \
+        ncdu \
+        build-essential \
+        git \
+        python3-venv || true
+
+    apt-get install -y --no-install-recommends speedtest-cli || echo "Warning: speedtest-cli failed"
+
+    # Create and activate virtual environment
+    python3 -m venv /opt/venv
+    . /opt/venv/bin/activate
+
+    # Upgrade pip and install Python packages
+    pip install --upgrade pip
+    pip install -r /requirements.txt
+    pip install pytorch-tabnet
+
+    # Clean up
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+%environment
+    # Automatically activate virtual environment on container start
+    . /opt/venv/bin/activate
